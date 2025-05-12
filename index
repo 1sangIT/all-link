@@ -6,7 +6,8 @@
   <title>자주 들어가는 곳은 한눈에 보자</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
       max-width: 840px;
       margin: 0 auto;
       padding: 2rem 1rem;
@@ -40,18 +41,16 @@
       cursor: pointer;
       transition: background 0.2s ease;
     }
-    button.add:hover {
-      background: #2563eb;
-    }
+    button.add:hover { background: #2563eb; }
+
     .buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
       margin-top: 1rem;
     }
-    .btn-wrapper {
-      position: relative;
-    }
+    .btn-wrapper { position: relative; }
+
     .link-btn {
       padding: 0.75rem 1.4rem;
       border: none;
@@ -62,9 +61,8 @@
       cursor: pointer;
       transition: background 0.2s ease;
     }
-    .link-btn:hover {
-      background: #059669;
-    }
+    .link-btn:hover { background: #059669; }
+
     .del-btn {
       position: absolute;
       top: -6px;
@@ -83,45 +81,39 @@
       justify-content: center;
       padding: 0;
     }
-    .del-btn:hover {
-      background: #dc2626;
-    }
+    .del-btn:hover { background: #dc2626; }
   </style>
 </head>
 <body>
   <h1>빠른 링크 버튼 생성기</h1>
+
   <div class="form-group">
-    <input
-      id="urlInput"
-      type="text"
-      placeholder="사이트 URL을 입력하세요 (https://...)"
-    />
+    <input id="urlInput" type="text" placeholder="사이트 URL을 입력하세요 (https://...)" />
     <input id="labelInput" type="text" placeholder="버튼 이름 (선택)" />
     <button class="add" id="addBtn">추가</button>
   </div>
+
   <div class="buttons" id="buttons"></div>
 
   <script>
-    const urlInput = document.getElementById("urlInput");
+    const urlInput   = document.getElementById("urlInput");
     const labelInput = document.getElementById("labelInput");
-    const addBtn = document.getElementById("addBtn");
+    const addBtn     = document.getElementById("addBtn");
     const buttonsDiv = document.getElementById("buttons");
 
     function createLinkButton(url, label) {
-      // wrapper div
       const wrapper = document.createElement("div");
       wrapper.className = "btn-wrapper";
 
-      // anchor + button
-      const a = document.createElement("a");
-      a.href = url;
-      a.target = "_blank";
+      const a   = document.createElement("a");
+      a.href    = url;
+      a.target  = "_blank";
+
       const btn = document.createElement("button");
-      btn.className = "link-btn";
+      btn.className   = "link-btn";
       btn.textContent = label || url;
       a.appendChild(btn);
 
-      // delete button
       const del = document.createElement("button");
       del.className = "del-btn";
       del.textContent = "×";
@@ -161,7 +153,7 @@
       urlInput.focus();
     });
 
-    // 최초 로드 시 저장된 링크 불러오기
+    // 초기 로드시 저장된 링크 불러오기
     loadLinks();
   </script>
 </body>
